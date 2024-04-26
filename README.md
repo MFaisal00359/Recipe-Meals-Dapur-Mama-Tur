@@ -1,3 +1,3 @@
-# savory-recipe-portal-app
+# Tasty-Mama-Recipes-app
 
-SavoryRecipePortal App adalah tugas besar Pengembangan Perangkat Lunak dari kelompok 5
+TastyMamaRecipes App adalah tugas besar Pengembangan Perangkat Lunak dari kelompok 5
