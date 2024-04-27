@@ -1,3 +1,3 @@
-# Tasty-Mama-Recipes-App
+# Dapur-Mama-Tur-App
 
-TastyMamaRecipes App adalah tugas besar pengembangan perangkat lunak mobile kelompok 5 ITERA
+Dapur Mama Tur App adalah tugas besar pengembangan perangkat lunak mobile kelompok 5 ITERA
