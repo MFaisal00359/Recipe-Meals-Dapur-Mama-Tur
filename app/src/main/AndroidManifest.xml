@@ -13,6 +13,12 @@
         android:theme="@style/Theme.DapurMamaTur"
         tools:targetApi="31" >
         <activity
+            android:name=".Register"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_register"
+            android:theme="@style/Theme.DapurMamaTur.Fullscreen" />
+        <activity
             android:name=".MainActivity"
             android:exported="true" >
             <intent-filter>

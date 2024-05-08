@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Dapur Mama Tur</string>
+    <string name="title_activity_register">Register</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="sign_to_explore">Sign to Explore</string>
+    <string name="welcome_friend">Welcome, Friend</string>
+    <string name="username">Username</string>
+    <string name="type_password">Type Password</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="email">Email</string>
 </resources>
