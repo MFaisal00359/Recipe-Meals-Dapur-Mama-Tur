@@ -11,12 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DapurMamaTur"
-        tools:targetApi="31" >
+         >
+<!--        tools:targetApi="31"-->
         <activity
             android:name=".Register"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"
-            android:label="@string/title_activity_register"
+            android:label="activity_main"
             android:theme="@style/Theme.DapurMamaTur.Fullscreen" />
         <activity
             android:name=".MainActivity"

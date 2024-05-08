@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,13 +10,11 @@
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/imageViewLogo"
+        android:id="@+id/logo_icons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="96dp"
-        android:background="@drawable/background_circle"
         android:importantForAccessibility="no"
-        android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,10 +32,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.21"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewHeading2" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewHeading2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="244dp"
@@ -77,54 +76,54 @@
         tools:layout_editor_absoluteX="41dp"
         tools:ignore="MissingConstraints" />
 
-    <EditText
-        android:id="@+id/PasswordInput"
-        android:layout_width="328dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="12dp"
-        android:background="#FFFFFF"
-        android:hint="@string/type_password"
-        android:inputType="textPassword"
-        android:padding="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textEmail"
-        android:importantForAutofill="no" />
+<!--    <EditText-->
+<!--        android:id="@+id/PasswordInput"-->
+<!--        android:layout_width="328dp"-->
+<!--        android:layout_height="51dp"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        android:background="#FFFFFF"-->
+<!--        android:hint="@string/type_password"-->
+<!--        android:inputType="textPassword"-->
+<!--        android:padding="8dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.493"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textEmail"-->
+<!--        android:importantForAutofill="no" />-->
 
-    <TextView
-        android:id="@+id/textEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/password"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/UsernameInput"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="41dp" />
+<!--    <TextView-->
+<!--        android:id="@+id/textEmail"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:text="@string/password"-->
+<!--        android:textColor="#000000"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/UsernameInput"-->
+<!--        tools:ignore="MissingConstraints"-->
+<!--        tools:layout_editor_absoluteX="41dp" />-->
 
-    <Button
-        android:id="@+id/buttonLogin"
-        android:layout_width="328dp"
-        android:layout_height="51dp"
-        android:background="@drawable/button_custom_orange"
-        android:text="@string/sign_in"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="617dp"
-        tools:ignore="MissingConstraints" />
+<!--    <Button-->
+<!--        android:id="@+id/buttonLogin"-->
+<!--        android:layout_width="328dp"-->
+<!--        android:layout_height="51dp"-->
+<!--        android:background="@drawable/button_custom_orange"-->
+<!--        android:text="@string/sign_in"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.493"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        tools:layout_editor_absoluteY="617dp"-->
+<!--        tools:ignore="MissingConstraints" />-->
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="418dp"
-        android:layout_height="93dp"
-        android:src="@drawable/rectangle_1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:importantForAccessibility="no" />
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView"-->
+<!--        android:layout_width="418dp"-->
+<!--        android:layout_height="93dp"-->
+<!--        android:src="@drawable/rectangle_1"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        android:importantForAccessibility="no" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
