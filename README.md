@@ -20,12 +20,26 @@ Clone App:
 
 1. Clone repositori ke lokal Anda:
 
-```
+#### Clone Repo
+```bash
 git clone https://github.com/nama_pengembang/DapurMamaTur.git
+```
+
+#### Pull update repo
+```bash
+git pull origin main
+```
+
+#### Commit update
+```bash
+git commit
+```
+
+#### Push file
+```bash
+git push origin main
 ```
 
 ### FLow App:
 
 ...
-
-test
