@@ -28,3 +28,4 @@ git clone https://github.com/nama_pengembang/DapurMamaTur.git
 
 ...
 
+test
