@@ -7,19 +7,21 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="Dapur_Mama_Tur"
+        android:label="@string/Dapur_Mama_Tur"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DapurMamaTur">
         <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".RegisterActivity"
             android:exported="false" />
-            <!-- tools:targetApi="31" -->
+
         <activity
-            android:name=".MainActivity"
+            android:name=".WelcomeActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"
-            android:label="activity_main"
             android:theme="@style/Theme.DapurMamaTur.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
