@@ -24,4 +24,14 @@
     <string name="sub_heading_welcome">various delicious food recipes that you can try and prepare and eat </string>
     <string name="welcome_to_dapur_mama_tur">Welcome to Dapur Mama Tur</string>
     <string name="explore">Explore</string>
+    <string name="john_doe">John Eng</string>
+    <string name="search">Search Recipe…</string>
+    <string name="category">Category</string>
+    <string name="category_1">Category 1</string>
+    <string name="category_2">Category 2</string>
+    <string name="category_3">Category 3</string>
+    <string name="profile_image">Profile Image</string>
+    <string name="potato">Potato</string>
+    <string name="category_4">Category 4</string>
+    <string name="this_is_a_image_recipe">This is a Image Recipe</string>
 </resources>

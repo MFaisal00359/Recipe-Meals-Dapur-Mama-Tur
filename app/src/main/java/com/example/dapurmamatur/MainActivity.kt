@@ -20,9 +20,14 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        // Set click listener for the textViewCreateAccount
+        // Link ke Register
         findViewById<View>(R.id.textViewCreateAccount).setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
+        }
+
+        // Link ke HomeActivity
+        findViewById<View>(R.id.buttonLogin).setOnClickListener {
+            startActivity(Intent(this, HomeActivity::class.java))
         }
     }
 }
