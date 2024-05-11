@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Link ke Register
-        findViewById<View>(R.id.textViewCreateAccount).setOnClickListener {
+        findViewById<View>(R.id.textLinkCreateAccount).setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
 

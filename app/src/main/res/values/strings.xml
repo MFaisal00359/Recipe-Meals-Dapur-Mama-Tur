@@ -1,18 +1,19 @@
 <resources>
     <string name="welcome_friend">Welcome, Friend</string>
     <string name="sign_to_explore">Sign to Explore</string>
-    <string name="your_email">your email</string>
+    <string name="your_email">Your Email</string>
     <string name="your_password">Your Password</string>
     <string name="email">Email</string>
     <string name="sign_in">Sign In</string>
-    <string name="new_password">new password</string>
-    <string name="not_have_account_create_account">Not have account? Create account</string>
+    <string name="new_password">New Password</string>
+    <string name="not_have_account">Not have account?</string>
+    <string name="create_account">Create account</string>
     <string name="password">Password</string>
     <string name="Dapur_Mama_Tur">Dapur Mama Tur</string>
     <string name="descriptionimagebg1">this image food\'s for background decoration app\n</string>
     <string name="description_logo">this image is a logo `dapur mama tur`\n</string>
     <string name="username">Username</string>
-    <string name="create_username">create your username</string>
+    <string name="create_username">Create Your Username</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="confirm_your_password">confirm your password</string>
     <string name="type_password">type password</string>
@@ -21,7 +22,7 @@
     <string name="back_button_description">this is a Back Button</string>
     <string name="activity_main_label">Activity_main_label</string>
     <string name="find_recipes_food_meals">Find Recipes Food Meals</string>
-    <string name="sub_heading_welcome">various delicious food recipes that you can try and prepare and eat </string>
+    <string name="sub_heading_welcome">Various delicious food recipes that you can try and prepare and eat </string>
     <string name="welcome_to_dapur_mama_tur">Welcome to Dapur Mama Tur</string>
     <string name="explore">Explore</string>
     <string name="john_doe">John Eng</string>

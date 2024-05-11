@@ -9,36 +9,19 @@
     android:orientation="vertical"
     tools:context=".WelcomeActivity">
 
-    <TextView
-        android:id="@+id/textViewHeading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:text="@string/welcome_to_dapur_mama_tur"
-        android:textColor="#191C1B"
-        android:textSize="32sp"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_max="320dp"
-        tools:ignore="MissingConstraints" />
-
     <ImageView
         android:id="@+id/welcome_image"
-        android:layout_width="340dp"
-        android:layout_height="340dp"
-        android:layout_marginTop="56dp"
+        android:layout_width="380dp"
+        android:layout_height="391dp"
+        android:layout_marginBottom="40dp"
         android:contentDescription="@string/description_logo"
         android:importantForAccessibility="no"
         android:src="@drawable/welcome_image"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintDimensionRatio="h,1:1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewHeading"
         tools:ignore="MissingConstraints" />
 
     <LinearLayout
@@ -50,8 +33,7 @@
         android:paddingHorizontal="24dp"
         android:paddingTop="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp">
+        tools:layout_editor_absoluteX="-16dp">
 
         <TextView
             android:id="@+id/WelcomeTextHeading"
@@ -76,7 +58,7 @@
         <Button
             android:id="@+id/buttonWelcome"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
             android:layout_marginTop="34dp"
             android:background="@drawable/button_orange"
             android:text="@string/explore"
