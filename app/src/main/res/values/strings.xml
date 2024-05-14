@@ -38,4 +38,5 @@
     <string name="favorit">Favorit</string>
     <string name="image_profile">Image Profile</string>
     <string name="email_input">Email Input</string>
+    <string name="logout">Logout</string>
 </resources>

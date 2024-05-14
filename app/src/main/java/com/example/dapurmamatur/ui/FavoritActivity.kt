@@ -8,7 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dapurmamatur.R
-import com.example.dapurmamatur.Recipe
+import com.example.dapurmamatur.data.model.Recipe
 import com.example.dapurmamatur.RecipeAdapter
 
 class FavoritActivity : AppCompatActivity() {

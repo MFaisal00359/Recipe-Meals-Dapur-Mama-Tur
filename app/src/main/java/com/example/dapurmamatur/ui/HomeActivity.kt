@@ -10,7 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dapurmamatur.R
-import com.example.dapurmamatur.Recipe
+import com.example.dapurmamatur.data.model.Recipe
 import com.example.dapurmamatur.RecipeAdapter
 
 class HomeActivity : AppCompatActivity() {
@@ -21,22 +21,18 @@ class HomeActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_home)
 
-        // Set Padding SysteBars
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        // Init RecyclerView (Buat List)
         val recyclerView: RecyclerView = findViewById(R.id.recyclerViewRecipes)
         val layoutManager = GridLayoutManager(this, 2)
         recyclerView.layoutManager = layoutManager
 
-        // Inisialisasi Adapter
         recipeAdapter = RecipeAdapter(emptyList())
 
-        // Data Sampel Dummy
         val dummyRecipes = listOf(
             Recipe(R.drawable.lamb, "Recipe 1"),
             Recipe(R.drawable.potato, "Recipe 2"),
@@ -48,12 +44,15 @@ class HomeActivity : AppCompatActivity() {
             Recipe(R.drawable.mie, "Recipe 8"),
         )
 
-        // Update Dummy
         recipeAdapter.updateData(dummyRecipes)
         recyclerView.adapter = recipeAdapter
 
         findViewById<View>(R.id.exploreTitle).setOnClickListener {
             startActivity(Intent(this, FavoritActivity::class.java))
+        }
+
+        findViewById<View>(R.id.profileImage).setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
         }
     }
 }
