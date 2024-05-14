@@ -1,4 +1,4 @@
-package com.example.dapurmamatur
+package com.example.dapurmamatur.ui
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -7,6 +7,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.dapurmamatur.R
+import com.example.dapurmamatur.Recipe
+import com.example.dapurmamatur.RecipeAdapter
 
 class FavoritActivity : AppCompatActivity() {
     private lateinit var recipeAdapter: RecipeAdapter

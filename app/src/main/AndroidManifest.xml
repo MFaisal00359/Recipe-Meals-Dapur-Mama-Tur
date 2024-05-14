@@ -12,31 +12,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DapurMamaTur">
         <activity
-            android:name=".ProfileActivity"
+            android:name=".ui.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".FavoritActivity"
+            android:name=".ui.FavoritActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".ui.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".ui.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".WelcomeActivity"
+            android:name=".ui.WelcomeActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"
             android:theme="@style/Theme.DapurMamaTur.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

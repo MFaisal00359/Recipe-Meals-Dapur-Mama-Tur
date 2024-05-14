@@ -65,7 +65,7 @@
         app:layout_constraintStart_toStartOf="parent" >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/EmailInputText"
+            android:id="@+id/EmailInputET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
@@ -101,7 +101,7 @@
         app:layout_constraintStart_toStartOf="parent" >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/UsernameInputText"
+            android:id="@+id/UsernameInputET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
@@ -137,7 +137,7 @@
         app:layout_constraintStart_toStartOf="parent" >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/PasswordInputText"
+            android:id="@+id/PasswordInputET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
@@ -173,7 +173,7 @@
         app:layout_constraintStart_toStartOf="parent" >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ConfirmPasswordInputText"
+            android:id="@+id/ConfirmPasswordInputET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"

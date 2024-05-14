@@ -9,10 +9,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.example.dapurmamatur" />
+                  <option name="mobileSdkAppId" value="1:92432153071:android:2c8bdbb0ecb246023bde1a" />
+                  <option name="projectId" value="dapur-mama-tur" />
+                  <option name="projectNumber" value="92432153071" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

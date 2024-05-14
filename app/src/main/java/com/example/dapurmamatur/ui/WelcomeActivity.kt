@@ -1,4 +1,4 @@
-package com.example.dapurmamatur
+package com.example.dapurmamatur.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.dapurmamatur.R
 
 class WelcomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +21,7 @@ class WelcomeActivity : AppCompatActivity() {
         }
 
         findViewById<View>(R.id.buttonWelcome).setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
         }
     }
 }

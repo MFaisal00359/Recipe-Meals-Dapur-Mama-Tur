@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#F7FAF8"
     android:orientation="vertical"
-    android:name=".MainActivity">
+    android:name=".LoginActivity">
 
     <ImageView
         android:id="@+id/logo_icons"
@@ -82,7 +82,7 @@
         app:layout_constraintStart_toStartOf="parent" >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/EmailInputText"
+            android:id="@+id/EmailInputET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
@@ -115,10 +115,11 @@
         app:layout_constraintWidth_max="360dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" >
+        app:layout_constraintStart_toStartOf="parent"
+        app:passwordToggleEnabled="true" >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/PasswordInputText"
+            android:id="@+id/PasswordInputET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
