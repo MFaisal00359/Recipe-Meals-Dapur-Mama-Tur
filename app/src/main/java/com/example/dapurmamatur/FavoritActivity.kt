@@ -1,8 +1,6 @@
 package com.example.dapurmamatur
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -10,13 +8,18 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class HomeActivity : AppCompatActivity() {
+class FavoritActivity : AppCompatActivity() {
     private lateinit var recipeAdapter: RecipeAdapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_home)
+
+        setContentView(R.layout.activity_favorit)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
 
         // Set Padding SysteBars
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -48,9 +51,5 @@ class HomeActivity : AppCompatActivity() {
         // Update Dummy
         recipeAdapter.updateData(dummyRecipes)
         recyclerView.adapter = recipeAdapter
-
-        findViewById<View>(R.id.exploreTitle).setOnClickListener {
-            startActivity(Intent(this, FavoritActivity::class.java))
-        }
     }
 }

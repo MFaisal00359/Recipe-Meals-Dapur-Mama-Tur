@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DapurMamaTur">
         <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FavoritActivity"
+            android:exported="false" />
+        <activity
             android:name=".HomeActivity"
             android:exported="false" />
         <activity
