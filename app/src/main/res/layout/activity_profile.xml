@@ -47,7 +47,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AppBar" />
 
-    <EditText
+    <TextView
         android:id="@+id/UsernameInputText"
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -64,7 +64,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileImage" />
 
-    <EditText
+    <TextView
         android:id="@+id/EmailInputText"
         android:layout_width="match_parent"
         android:layout_height="60dp"
