@@ -33,7 +33,7 @@ class FavoritActivity : AppCompatActivity() {
 
         // Init RecyclerView (Buat List)
         val recyclerView: RecyclerView = findViewById(R.id.recyclerViewRecipes)
-        val layoutManager = GridLayoutManager(this, 2)
+        val layoutManager = GridLayoutManager(this, 1)
         recyclerView.layoutManager = layoutManager
 
         // Inisialisasi Adapter

@@ -51,7 +51,7 @@ class HomeActivity : AppCompatActivity() {
             startActivity(Intent(this, FavoritActivity::class.java))
         }
 
-        findViewById<View>(R.id.profileImage).setOnClickListener {
+        findViewById<View>(R.id.profileLayout).setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
         }
     }

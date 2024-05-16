@@ -47,19 +47,19 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="12dp"
-            android:paddingBottom="180dp">
+            android:paddingTop="24dp"
+            android:paddingBottom="44dp">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewRecipes"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
+                android:layout_marginHorizontal="25dp"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintWidth_max="360dp"
                 app:spanCount="1"
                 tools:listitem="@layout/item_recipe" />
         </androidx.constraintlayout.widget.ConstraintLayout>
