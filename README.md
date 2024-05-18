@@ -71,55 +71,38 @@ Aplikasi Daftar Resep Makanan (Dapur Mama Tur) adalah aplikasi yang berguna untu
     <li>Has (One-to-One): Hubungan ini menghubungkan entitas Menu’s Recipe ke entitas API Recipes List. Ini menunjukkan bahwa setiap resep di menu memiliki entri yang sesuai dalam daftar resep API. </li>
     <li>Recipe Detail (One-to-One): Hubungan ini menghubungkan entitas Menu’s Recipe ke entitas Recipe Detail”. Ini menunjukkan bahwa setiap resep di menu memiliki set instruksi yang detail. </li>
   </ul><br>
-  
-  <li><b>Entity Relationship Diagram (ERD)</b></li><br><br>
-  <img src=""><br>
-  <p></p><br>
-  
-  <li><b>UML Design</b></li><br>
+
+  <li><b>UML Design</b></li>
   <ul type='disc'>
-    <li><i>Activity Diagram</i></li><br>
+    <li>Activity Diagram</li>
       <ol type='1'>
-        <li><b>Login</b></li><br>
+        <li><b>Login</b></li>
           <img src="">
-        <li><b>Register</b></li><br>
+        <li><b>Register</b></li>
           <img src="">
-        <li><b>Search</b></li><br>
+        <li><b>Search</b></li>
           <img src="">
-        <li><b></b></li><br>
+        <li><b>Add Recipe to Favorite List</b></li>
           <img src="">
-        <li><b></b></li><br>
+        <li><b>Delete Recipe from Favorite List</b></li>
           <img src="">
-        <li><b>Edit profil</b></li><br>
-          <img src="">
-        <li><b></b></li><br>
+        <li><b>Edit profil</b></li>
           <img src="">
       </ol><br>
-    <li><i>Sequence Diagram</i></li><br>
+    <li>Sequence Diagram</li><br>
       <ol type='1'>
-      </ol>
+      </ol><br>
+    <li>Class Diagram</li>
+    <img src=""><br>
+    <p>Dari class diagram di atas ada 5 class yang terbentuk yaitu User, Menu’s Recipe, Search, Recipe Detail, dan Profile.</p>
+    <ol type='1'>
+        <li>Class User memiliki atribut username, password, dan email yang memiliki 2 aktivitas yang bisa dilakukan yaitu login dan register.</li>
+        <li>Class Menu’s Recipe memiliki atribut namerecipe, type, dan favorite yang memiliki aktivitas search_menu_recipe.</li>
+        <li>Class Search memiliki aktivitas search_by_namerecipe untuk mencari nama resep yang diinginkan.</li>
+        <li>Class Recipe Detail memiliki atribut summarize fod, ingredients, dan instructionfood yang memiliki aktivitas view_recipe_detail.</li>
+        <li>Class Profil memiliki atribut yang sama dengan User namun dengan aktivitas yang berbeda yaitu edit_profile dan log_out.</li>
   </ul><br>
-
-  <li><b>Class Diagram</b></li><br>
-  <img src=""><br>
-  <p>     </p>
-  <ol type='1'>
-    <li></li><br>
-    <li><br>
-    a. <br>
-    b.
-    </li><br>
-    <li></li><br>
-    <li></li><br>
-    <li><br>
-    </li>
-  </ol><br>
   
-  <li><b>UI Design (Figma)</b></li><br>
-  <ol type='1'>
-    <li></li>
-    <li></li>
-  </ol><br>
 </ol>
 
 
