@@ -26,6 +26,10 @@ android {
                 "proguard-rules.pro"
             )
         }
+
+        debug {
+            buildConfigField("String", "BASE_URL", "\"https://www.themealdb.com/api/json/v1/1/\"")
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -36,11 +40,11 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -51,15 +55,4 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
-    implementation(libs.retrofit)
-    implementation(libs.retrofit2.converter.gson)
-    implementation(libs.kotlinx.coroutines.core)
-    implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.androidx.lifecycle.livedata.ktx)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
-
-    implementation(libs.glide)
-    annotationProcessor(libs.compiler)
-
 }

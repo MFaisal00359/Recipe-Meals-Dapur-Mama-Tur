@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.bumptech.glide.Glide
 import com.example.dapurmamatur.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -30,7 +29,6 @@ class ProfileActivity : AppCompatActivity() {
         uri?.let {
             profileImageView.setImageURI(it)
             Toast.makeText(this, "Image successfully added", Toast.LENGTH_SHORT).show()
-            uploadImageToFirebase(it)
         }
     }
 
@@ -76,29 +74,6 @@ class ProfileActivity : AppCompatActivity() {
             pickImageLauncher.launch("image/*")
         }
 
-        loadImageFromFirebase()
     }
 
-    private fun uploadImageToFirebase(uri: Uri) {
-        val storageRef = FirebaseStorage.getInstance().reference.child("profile_images/${user.uid}.jpg")
-        storageRef.putFile(uri)
-            .addOnSuccessListener {
-                storageRef.downloadUrl.addOnSuccessListener { downloadUri ->
-                    // Update UI with the new profile image
-                    Glide.with(this).load(downloadUri).into(profileImageView)
-                }
-            }
-            .addOnFailureListener {
-                Toast.makeText(this, "Failed to upload image", Toast.LENGTH_SHORT).show()
-            }
-    }
-
-    private fun loadImageFromFirebase() {
-        val storageRef = FirebaseStorage.getInstance().reference.child("profile_images/${user.uid}.jpg")
-        storageRef.downloadUrl.addOnSuccessListener { uri ->
-            Glide.with(this).load(uri).into(profileImageView)
-        }.addOnFailureListener {
-            profileImageView.setImageResource(R.drawable.default_profile_image)
-        }
-    }
 }

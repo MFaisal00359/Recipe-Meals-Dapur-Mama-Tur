@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "92432153071",
+    "project_id": "dapur-mama-tur",
+    "storage_bucket": "dapur-mama-tur.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:92432153071:android:2c8bdbb0ecb246023bde1a",
+        "android_client_info": {
+          "package_name": "com.example.dapurmamatur"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeUMM4IVE37g4cngvQ9WxdoiB8uTM6G_A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -42,4 +42,13 @@
     <string name="register_account">Register Account</string>
     <string name="profile">Profile</string>
     <string name="add_profile_image_button">Add Profile Image Button</string>
+    <string name="detail_recipe">Detail recipe</string>
+    <string name="ingredient">Ingredient</string>
+    <string name="instruction_meals">instruction Meals</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="instruction_text">Instruction Body Text</string>
+    <string name="ingredient_image">Ingredient_image</string>
+    <string name="ingredient_text">Ingredient_text</string>
+    <string name="ingredient_name">Ingredient Name</string>
+    <string name="recipe_image">Recipe Image</string>
 </resources>
