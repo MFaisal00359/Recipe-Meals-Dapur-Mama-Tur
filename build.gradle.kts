@@ -2,10 +2,13 @@
 buildscript {
     repositories {
         google()
+        mavenCentral()
     }
 
     dependencies {
         classpath(libs.gradle)
+        classpath(libs.androidx.navigation.safe.args.gradle.plugin)
+        classpath(libs.hilt.android.gradle.plugin)
     }
 }
 
