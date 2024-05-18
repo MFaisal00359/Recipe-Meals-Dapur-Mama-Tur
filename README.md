@@ -40,6 +40,12 @@ git commit
 git push origin main
 ```
 
-### FLow App:
+### Tentang Aplikasi:
+Aplikasi Daftar Resep Makanan (Dapur Mama Tur) adalah aplikasi yang berguna untuk memudahkan pengguna dalam menemukan, menyimpan resep favorit makanan mereka. Aplikasi ini bertujuan untuk memenuhi kebutuhan akses cepat dan praktis terhadap berbagai resep makanan.
 
-...
+### Project Team:
+1. Irwan Ferdi Kuswendi  	(121140008)
+2. M. Guntur Al Baihaqi  	(121140014)
+3. Tiara Putri Elisa  		(121140049)
+4. Adriansyah Ramadhan  	(121140051)
+5. Muhammad Faisal Safira (121140079)
