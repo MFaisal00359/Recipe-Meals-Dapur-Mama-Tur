@@ -5,7 +5,7 @@ Dapur Mama Tur adalah sebuah aplikasi Android yang memudahkan pengguna untuk men
 
 ### Spesifikasi
 
-| specification          | Value          |
+| Specification          | Value          |
 |------------------------|----------------|
 | Nama Aplikasi          | Dapur Mama Tur |
 | Bahasa Pengembangan    | Kotlin         |
@@ -49,3 +49,9 @@ Aplikasi Daftar Resep Makanan (Dapur Mama Tur) adalah aplikasi yang berguna untu
 3. Tiara Putri Elisa  		(121140049)
 4. Adriansyah Ramadhan  	(121140051)
 5. Muhammad Faisal Safira (121140079)
+
+## System Planning
+
+a. Arsitektur Aplikasi
+Aplikasi Daftar Resep Makanan menggunakan MVVM (Model-View-Viewmodel) yang memisahkan antara logika, tampilan (UI), dan data. Model dalam app ini bertanggung jawab atas representasi data resep makanan, sementara View sebagai antarmuka pengguna yang menampilkan informasi dan menerima masukan. View Model bertindak sebagai perantara antara keduanya, mengelola logika, memproses permintaan dari view, dan berinteraksi dengan Model. Dengan menggunakan arsitektur ini, dapat memudahkan pengembangan aplikasi karena implementasi dari pemisahan dari 3 peran tersebut memudahkan develop dan juga mendesain aplikasi ini.
+
