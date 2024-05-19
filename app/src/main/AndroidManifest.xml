@@ -2,13 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.dapurmamatur">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-<!--    android:name=".MyApp"-->
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -18,6 +16,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DapurMamaTur">
+        <activity
+            android:name=".ui.DetailActivity"
+            android:exported="false"
+            android:theme="@style/Theme.DapurMamaTur" />
         <activity
             android:name=".ui.ProfileActivity"
             android:exported="false" />
@@ -42,4 +44,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>
