@@ -3,7 +3,6 @@ package com.example.dapurmamatur.ui
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -20,9 +19,6 @@ class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        enableEdgeToEdge()
-
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -45,11 +41,10 @@ class RegisterActivity : AppCompatActivity() {
             val password = binding.PasswordInputET.text.toString().trim()
             val confirmPassword = binding.ConfirmPasswordInputET.text.toString().trim()
 
-            // Validate input
             if (email.isEmpty() || username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Tolong isi semua fields", Toast.LENGTH_SHORT).show()
             } else if (password != confirmPassword) {
-                Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Kata sandi tidak cocok", Toast.LENGTH_SHORT).show()
             } else {
                 registerUser(email, password, username)
             }
@@ -60,11 +55,9 @@ class RegisterActivity : AppCompatActivity() {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Registration success
                     val user = auth.currentUser
                     updateUserProfile(user, username)
                 } else {
-                    // Registration failed
                     Toast.makeText(baseContext, "Registration failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -78,12 +71,10 @@ class RegisterActivity : AppCompatActivity() {
         user?.updateProfile(profileUpdates)
             ?.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    // Profile updated successfully
                     val intent = Intent(this, HomeActivity::class.java)
                     startActivity(intent)
                     finish()
                 } else {
-                    // Profile update failed
                     Toast.makeText(baseContext, "Profile update failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
