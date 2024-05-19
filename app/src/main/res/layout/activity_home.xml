@@ -12,14 +12,14 @@
         android:id="@+id/AppBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
+        android:layout_marginHorizontal="25dp"
         android:layout_marginTop="44dp"
         android:orientation="vertical"
+        android:background="#F7FAF8"
         android:padding="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_max="360dp" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <!-- Profile -->
         <LinearLayout
@@ -75,7 +75,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/NestedScroll"
+        android:id="@+id/viewContent"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -86,6 +86,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingHorizontal="25dp"
             android:paddingTop="12dp"
             android:paddingBottom="180dp">
 
@@ -101,60 +102,31 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_max="360dp" />
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <LinearLayout
-                android:id="@+id/categoryItem"
+            <ProgressBar
+                android:id="@+id/homeCategoryLoading"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="44dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/categoriesRecyclerView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:orientation="horizontal"
-                android:layout_marginTop="12dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/categoryTitle"
-                app:layout_constraintWidth_max="360dp" >
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/categoryChip1"
-                    style="@style/Widget.MaterialComponents.Chip.Filter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:text="@string/category_1"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/categoryChip2"
-                    style="@style/Widget.MaterialComponents.Chip.Filter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:text="@string/category_2"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/categoryChip3"
-                    style="@style/Widget.MaterialComponents.Chip.Filter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:text="@string/category_3"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/categoryChip4"
-                    style="@style/Widget.MaterialComponents.Chip.Filter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/category_4"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-            </LinearLayout>
+                tools:listitem="@layout/item_categories" />
 
             <TextView
                 android:id="@+id/exploreTitle"
@@ -168,8 +140,18 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.509"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/categoryItem"
-                app:layout_constraintWidth_max="360dp" />
+                app:layout_constraintTop_toBottomOf="@id/categoriesRecyclerView" />
+
+            <ProgressBar
+                android:id="@+id/homeFoodsLoading"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <!-- RecyclerView List Resep -->
             <androidx.recyclerview.widget.RecyclerView
@@ -179,18 +161,69 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="24dp"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:spanCount="2"
-                tools:listitem="@layout/item_recipe"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/exploreTitle"
-                app:layout_constraintVertical_bias="0.0"
-                app:layout_constraintWidth_max="360dp" />
+                app:layout_constraintVertical_bias="1.0"
+                app:spanCount="2"
+                tools:listitem="@layout/item_recipe" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+    <RelativeLayout
+        android:id="@+id/viewOffline"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/imgDisconnect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:visibility="gone"
+            android:layout_marginStart="115dp"
+            android:layout_marginTop="378dp"
+            android:layout_marginEnd="96dp"
+            android:layout_marginBottom="336dp"
+            app:lottie_rawRes="@raw/nointernet" />
+
+        <TextView
+            android:id="@+id/homeDissconect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="123dp"
+            android:layout_marginTop="251dp"
+            android:layout_marginEnd="104dp"
+            android:layout_marginBottom="333dp"
+            android:text="@string/no_internet_connection"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="18sp"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        app:itemTextColor="@color/black_overlay"
+        app:layout_constraintBottom_toBottomOf="@+id/viewOffline"
+        app:menu="@menu/bottom_navigation_menu" />
+
+<!--    android:background="?android:attr/windowBackground"-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

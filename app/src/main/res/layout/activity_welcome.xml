@@ -11,16 +11,16 @@
 
     <ImageView
         android:id="@+id/welcome_image"
-        android:layout_width="380dp"
-        android:layout_height="391dp"
-        android:layout_marginBottom="40dp"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        android:layout_marginBottom="60dp"
         android:contentDescription="@string/description_logo"
         android:importantForAccessibility="no"
         android:src="@drawable/welcome_image"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintDimensionRatio="h,1:1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
@@ -28,28 +28,29 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="318dp"
-        android:background="#F29239"
+        android:background="#E88830"
         android:orientation="vertical"
         android:paddingHorizontal="24dp"
-        android:paddingTop="50dp"
+        android:paddingTop="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="-16dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/WelcomeTextHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="0dp"
             android:text="@string/find_recipes_food_meals"
             android:textColor="#FFFFFF"
-            android:textSize="28sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/WelcomeTextSub"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="12dp"
             android:text="@string/sub_heading_welcome"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
@@ -59,14 +60,14 @@
             android:id="@+id/buttonWelcome"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="44dp"
             android:background="@drawable/button_welcome"
-            android:text="@string/create_account"
+            android:text="@string/explore"
             android:textAllCaps="false"
             android:textColor="#191C1B"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/WelcomeTextSub"/>
+            app:layout_constraintTop_toBottomOf="@id/WelcomeTextSub" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
