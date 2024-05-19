@@ -4,7 +4,6 @@ plugins {
     alias(libs.plugins.googleGmsGoogleServices)
     id("kotlin-kapt")
     id("androidx.navigation.safeargs")
-    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -56,6 +55,8 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.firebase.auth)
     implementation(libs.firebase.storage.ktx)
+    implementation(libs.androidx.legacy.support.v4)
+    implementation(libs.androidx.fragment.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -88,19 +89,10 @@ dependencies {
     //noinspection KaptUsageInsteadOfKsp
     kapt(libs.androidx.room.compiler)
 
-    // Dagger Hilt
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
-    androidTestImplementation(libs.hilt.android.testing)
-    kaptAndroidTest(libs.hilt.compiler)
-    testImplementation(libs.hilt.android.testing)
-    kaptTest(libs.hilt.compiler)
-
     // OkHTTP Client
     implementation(libs.okhttp3.logging.interceptor)
     implementation(libs.okhttp)
     implementation(libs.logging.interceptor)
-
 }
 
 kapt {
