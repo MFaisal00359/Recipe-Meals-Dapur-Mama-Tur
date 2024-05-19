@@ -1,16 +1,24 @@
 package com.example.dapurmamatur.ui
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.viewModels
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.dapurmamatur.adapter.CategoriesAdapter
-import com.example.dapurmamatur.adapter.FoodsAdapter
-import com.example.dapurmamatur.data.repository.MainRepository
+import com.example.dapurmamatur.R
+import com.example.dapurmamatur.ui.adapter.CategoriesAdapter
+import com.example.dapurmamatur.ui.adapter.FoodsAdapter
 import com.example.dapurmamatur.databinding.ActivityHomeBinding
 import com.example.dapurmamatur.di.ApiModule
 import com.example.dapurmamatur.di.DbModule
+import com.example.dapurmamatur.di.NetworkModule
+import com.example.dapurmamatur.data.repository.MainRepository
+import com.example.dapurmamatur.utils.CheckConnection
 import com.example.dapurmamatur.utils.DataStatus
 import com.example.dapurmamatur.viewModel.HomeViewModel
 import com.example.dapurmamatur.viewModel.HomeViewModelFactory
@@ -18,34 +26,60 @@ import com.example.dapurmamatur.viewModel.HomeViewModelFactory
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
-    private val homeViewModel: HomeViewModel by viewModels {
-        HomeViewModelFactory(MainRepository(ApiModule.provideApiService(), DbModule.provideFoodDao(DbModule.provideDatabase(applicationContext))))
-    }
+    private lateinit var homeViewModel: HomeViewModel
     private lateinit var categoriesAdapter: CategoriesAdapter
     private lateinit var foodsAdapter: FoodsAdapter
+    private lateinit var checkConnection: CheckConnection
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val repository = MainRepository(
+            ApiModule.provideApiService(),
+            DbModule.provideFoodDao(DbModule.provideDatabase(applicationContext))
+        )
+
+        homeViewModel = ViewModelProvider(this, HomeViewModelFactory(repository)).get(HomeViewModel::class.java)
+
         setupRecyclerViews()
         setupObservers()
+        setupSearchInput()
+        setupConnectionObserver()
+        setupBottomNavigation()
 
         homeViewModel.getCategoriesList()
-        homeViewModel.getRandomFood()
+        homeViewModel.getFoodsList("m") // Display foods list starting with letter "a" initially
+
+        binding.profileLayout.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
     }
 
     private fun setupRecyclerViews() {
-        categoriesAdapter = CategoriesAdapter()
+        categoriesAdapter = CategoriesAdapter().apply {
+            setOnItemClickListener { category ->
+                homeViewModel.getFoodByCategory(category.strCategory ?: "")
+            }
+        }
+
         binding.categoriesRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@HomeActivity, LinearLayoutManager.HORIZONTAL, false)
             adapter = categoriesAdapter
         }
 
-        foodsAdapter = FoodsAdapter()
+        foodsAdapter = FoodsAdapter().apply {
+            setOnItemClickListener { meal ->
+                val intent = Intent(this@HomeActivity, DetailActivity::class.java).apply {
+                    putExtra("MEAL_ID", meal.idMeal)
+                }
+                startActivity(intent)
+            }
+        }
+
         binding.recyclerViewRecipes.apply {
-            layoutManager = LinearLayoutManager(this@HomeActivity)
+            layoutManager = GridLayoutManager(this@HomeActivity, 2)
             adapter = foodsAdapter
         }
     }
@@ -53,22 +87,75 @@ class HomeActivity : AppCompatActivity() {
     private fun setupObservers() {
         homeViewModel.categoriesList.observe(this, Observer { status ->
             when (status.status) {
-                DataStatus.Status.LOADING -> {
-                    // Show loading
-                }
+                DataStatus.Status.LOADING -> binding.homeCategoryLoading.visibility = View.VISIBLE
                 DataStatus.Status.SUCCESS -> {
-                    status.data?.let {
-                        categoriesAdapter.setData(it.categories)
-                    }
+                    binding.homeCategoryLoading.visibility = View.GONE
+                    status.data?.let { categoriesAdapter.setData(it.categories) }
                 }
-                DataStatus.Status.ERROR -> {
-                    // Show error
-                }
+                DataStatus.Status.ERROR -> binding.homeCategoryLoading.visibility = View.GONE
             }
         })
 
-        homeViewModel.randomFood.observe(this, Observer { meals ->
-            foodsAdapter.setData(meals)
+        homeViewModel.foodList.observe(this, Observer { status ->
+            when (status.status) {
+                DataStatus.Status.LOADING -> binding.homeFoodsLoading.visibility = View.VISIBLE
+                DataStatus.Status.SUCCESS -> {
+                    binding.homeFoodsLoading.visibility = View.GONE
+                    status.data?.let { foodsAdapter.setData(it.meals ?: emptyList()) }
+                }
+                DataStatus.Status.ERROR -> binding.homeFoodsLoading.visibility = View.GONE
+            }
         })
+    }
+
+    private fun setupSearchInput() {
+        binding.SearchInput.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                s?.toString()?.let {
+                    if (it.isNotEmpty()) {
+                        homeViewModel.getFoodBySearch(it)
+                    } else {
+                        homeViewModel.getFoodsList("m")
+                    }
+                }
+            }
+        })
+    }
+
+    private fun setupConnectionObserver() {
+        checkConnection = CheckConnection(NetworkModule.provideConnectivityManager(this))
+        checkConnection.observe(this, Observer { isConnected ->
+            if (isConnected) {
+                binding.viewOffline.visibility = View.GONE
+                binding.homeDissconect.visibility = View.GONE
+                binding.viewContent.visibility = View.VISIBLE
+            } else {
+                binding.viewOffline.visibility = View.VISIBLE
+                binding.homeDissconect.visibility = View.VISIBLE
+                binding.viewContent.visibility = View.GONE
+            }
+        })
+    }
+
+    private fun setupBottomNavigation() {
+        binding.bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_home -> {
+                    startActivity(Intent(this, HomeActivity::class.java))
+                    true
+                }
+                R.id.navigation_favorites -> {
+                    startActivity(Intent(this, FavoriteActivity::class.java))
+                    true
+                }
+                R.id.navigation_profile -> {
+                    startActivity(Intent(this, ProfileActivity::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
     }
 }

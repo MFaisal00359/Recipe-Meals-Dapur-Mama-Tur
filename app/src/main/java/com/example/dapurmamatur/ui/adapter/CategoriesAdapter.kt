@@ -1,4 +1,4 @@
-package com.example.dapurmamatur.adapter
+package com.example.dapurmamatur.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
