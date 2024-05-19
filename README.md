@@ -65,7 +65,7 @@ Aplikasi Daftar Resep Makanan (Dapur Mama Tur) adalah aplikasi yang berguna untu
     <li>“Recipe Detail” memiliki atribut “Ingredients”, “Summarize Food”, “Instruction Food”, “API Recipes Details” </li>
   </ul><br>
   
-  <p>Dan untuk Relation dari semua entiti sebagai berikut:	</p>
+  <p>Kemudian untuk Relation dari semua entiti sebagai berikut:	</p>
     <ul type='disc'>
     <li>Access (One-to-Many): Hubungan ini menghubungkan entitas Pengguna ke entitas Menu’s Recipe. Ini menunjukkan bahwa seorang pengguna dapat memiliki akses ke banyak resep. </li>
     <li>Has (One-to-One): Hubungan ini menghubungkan entitas Menu’s Recipe ke entitas API Recipes List. Ini menunjukkan bahwa setiap resep di menu memiliki entri yang sesuai dalam daftar resep API. </li>
