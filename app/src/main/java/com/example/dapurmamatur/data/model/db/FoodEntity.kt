@@ -1,4 +1,4 @@
-package com.example.dapurmamatur.db
+package com.example.dapurmamatur.data.model.db
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

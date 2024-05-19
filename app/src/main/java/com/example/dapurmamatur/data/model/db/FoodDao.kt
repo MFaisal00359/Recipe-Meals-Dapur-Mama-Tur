@@ -1,7 +1,6 @@
 package com.example.dapurmamatur.data.model.db
 
 import androidx.room.*
-import com.example.dapurmamatur.db.FoodEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
