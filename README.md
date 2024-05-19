@@ -93,6 +93,20 @@ Aplikasi Daftar Resep Makanan (Dapur Mama Tur) adalah aplikasi yang berguna untu
       </ol><br>
     <li>Sequence Diagram</li><br>
       <ol type='1'>
+        <li><b>Login Sequence</b></li>
+          <img src="https://github.com/MFaisal00359/dapur-mama-tur-app/assets/148713333/47b1b626-dbac-4731-9c83-edc20017b16d)">
+        <li><b>Register Sequence</b></li>
+          <img src="https://github.com/MFaisal00359/dapur-mama-tur-app/assets/148713333/75a90ee7-0887-40fd-9e95-551c6c27149e">
+        <li><b>Search Sequence</b></li>
+          <img src="https://github.com/MFaisal00359/dapur-mama-tur-app/assets/148713333/64fb28dc-0777-4541-a12d-cc37bf4cf165">
+        <li><b>Add Recipe to Favorite List Sequence</b></li>
+          <img src="https://github.com/MFaisal00359/dapur-mama-tur-app/assets/148713333/2349ebe3-f766-4f38-99a7-1d46c5235354">
+        <li><b>Delete Recipe from Favorite List Sequence</b></li>
+          <img src="https://github.com/MFaisal00359/dapur-mama-tur-app/assets/148713333/253c993d-b08c-42ee-bff4-d320dba92c1a">
+        <li><b>Edit Profil Sequence</b></li>
+          <img src="https://github.com/MFaisal00359/dapur-mama-tur-app/assets/148713333/8d3f3fd9-e4e1-465b-ab73-18e9ce16f9a9">
+        <li><b>Logout Sequence</b></li>
+          <img src="https://github.com/MFaisal00359/dapur-mama-tur-app/assets/148713333/8be79124-d4bd-4c4c-9e87-ff637314d055">
       </ol><br>
     <li>Class Diagram</li>
     <img src="https://github.com/MFaisal00359/dapur-mama-tur-app/assets/148713333/b1fc3679-911c-4765-a46a-dc90c152eb03"><br>
@@ -122,7 +136,7 @@ Aplikasi Daftar Resep Makanan (Dapur Mama Tur) adalah aplikasi yang berguna untu
 
   <li><b>Time Plan</b></li>
   <p>Estimasi waktu pengerjaan proyek aplikasi</p>
-  <img src="">
+  <img src="https://github.com/MFaisal00359/dapur-mama-tur-app/assets/148713333/e57a0772-e05c-4416-a067-76c2e9b14989">
 </ol>
 
 
