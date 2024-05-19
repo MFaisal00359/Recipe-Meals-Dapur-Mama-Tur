@@ -1,58 +1,74 @@
 package com.example.dapurmamatur.ui
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.dapurmamatur.R
-import com.example.dapurmamatur.data.model.Recipe
-import com.example.dapurmamatur.RecipeAdapter
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.dapurmamatur.adapter.CategoriesAdapter
+import com.example.dapurmamatur.adapter.FoodsAdapter
+import com.example.dapurmamatur.data.repository.MainRepository
+import com.example.dapurmamatur.databinding.ActivityHomeBinding
+import com.example.dapurmamatur.di.ApiModule
+import com.example.dapurmamatur.di.DbModule
+import com.example.dapurmamatur.utils.DataStatus
+import com.example.dapurmamatur.viewModel.HomeViewModel
+import com.example.dapurmamatur.viewModel.HomeViewModelFactory
 
 class HomeActivity : AppCompatActivity() {
-    private lateinit var recipeAdapter: RecipeAdapter
+
+    private lateinit var binding: ActivityHomeBinding
+    private val homeViewModel: HomeViewModel by viewModels {
+        HomeViewModelFactory(MainRepository(ApiModule.provideApiService(), DbModule.provideFoodDao(DbModule.provideDatabase(applicationContext))))
+    }
+    private lateinit var categoriesAdapter: CategoriesAdapter
+    private lateinit var foodsAdapter: FoodsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_home)
+        binding = ActivityHomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        setupRecyclerViews()
+        setupObservers()
+
+        homeViewModel.getCategoriesList()
+        homeViewModel.getRandomFood()
+    }
+
+    private fun setupRecyclerViews() {
+        categoriesAdapter = CategoriesAdapter()
+        binding.categoriesRecyclerView.apply {
+            layoutManager = LinearLayoutManager(this@HomeActivity, LinearLayoutManager.HORIZONTAL, false)
+            adapter = categoriesAdapter
         }
 
-        val recyclerView: RecyclerView = findViewById(R.id.recyclerViewRecipes)
-        val layoutManager = GridLayoutManager(this, 2)
-        recyclerView.layoutManager = layoutManager
-
-        recipeAdapter = RecipeAdapter(emptyList())
-
-        val dummyRecipes = listOf(
-            Recipe(R.drawable.lamb, "Recipe 1"),
-            Recipe(R.drawable.potato, "Recipe 2"),
-            Recipe(R.drawable.salmon, "Recipe 3"),
-            Recipe(R.drawable.mie, "Recipe 4"),
-            Recipe(R.drawable.potato, "Recipe 5"),
-            Recipe(R.drawable.salmon, "Recipe 6"),
-            Recipe(R.drawable.lamb, "Recipe 7"),
-            Recipe(R.drawable.mie, "Recipe 8"),
-        )
-
-        recipeAdapter.updateData(dummyRecipes)
-        recyclerView.adapter = recipeAdapter
-
-        findViewById<View>(R.id.exploreTitle).setOnClickListener {
-            startActivity(Intent(this, FavoritActivity::class.java))
+        foodsAdapter = FoodsAdapter()
+        binding.recyclerViewRecipes.apply {
+            layoutManager = LinearLayoutManager(this@HomeActivity)
+            adapter = foodsAdapter
         }
+    }
 
-        findViewById<View>(R.id.profileLayout).setOnClickListener {
-            startActivity(Intent(this, ProfileActivity::class.java))
-        }
+    private fun setupObservers() {
+        homeViewModel.categoriesList.observe(this, Observer { status ->
+            when (status.status) {
+                DataStatus.Status.LOADING -> {
+                    // Show loading
+                }
+                DataStatus.Status.SUCCESS -> {
+                    status.data?.let {
+                        categoriesAdapter.setData(it.categories)
+                    }
+                }
+                DataStatus.Status.ERROR -> {
+                    // Show error
+                }
+            }
+        })
+
+        homeViewModel.randomFood.observe(this, Observer { meals ->
+            foodsAdapter.setData(meals)
+        })
     }
 }
