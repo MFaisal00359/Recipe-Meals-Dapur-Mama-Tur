@@ -77,23 +77,25 @@ Aplikasi Daftar Resep Makanan (Dapur Mama Tur) adalah aplikasi yang berguna untu
     <li>Activity Diagram</li>
       <ol type='1'>
         <li><b>Login</b></li>
-          <img src="">
+          <img src="https://github.com/MFaisal00359/dapur-mama-tur-app/assets/148713333/bde361a9-bd63-41df-bcb2-8d0a485e8fe1">
         <li><b>Register</b></li>
-          <img src="">
+          <img src="https://github.com/MFaisal00359/dapur-mama-tur-app/assets/148713333/8d41a4a6-4e96-4eb7-8938-9f88e078d07e">
         <li><b>Search</b></li>
-          <img src="">
+          <img src="https://github.com/MFaisal00359/dapur-mama-tur-app/assets/148713333/61180281-ced4-42c3-b9fe-2c4f9b773c53">
         <li><b>Add Recipe to Favorite List</b></li>
-          <img src="">
+          <img src="https://github.com/MFaisal00359/dapur-mama-tur-app/assets/148713333/ee53a3da-2d67-4ad6-add2-f00cc7285adf">
         <li><b>Delete Recipe from Favorite List</b></li>
-          <img src="">
-        <li><b>Edit profil</b></li>
-          <img src="">
+          <img src="https://github.com/MFaisal00359/dapur-mama-tur-app/assets/148713333/6694d222-53f8-4929-87a3-559c0d40bf9a">
+        <li><b>Edit Profil</b></li>
+          <img src="https://github.com/MFaisal00359/dapur-mama-tur-app/assets/148713333/7ec9586e-022e-4f5d-9015-c10a657eaf67">
+        <li><b>Logout</b></li>
+          <img src="https://github.com/MFaisal00359/dapur-mama-tur-app/assets/148713333/9da55f58-ffcc-492b-a0cd-ffa1cc78f662">
       </ol><br>
     <li>Sequence Diagram</li><br>
       <ol type='1'>
       </ol><br>
     <li>Class Diagram</li>
-    <img src=""><br>
+    <img src="https://github.com/MFaisal00359/dapur-mama-tur-app/assets/148713333/b1fc3679-911c-4765-a46a-dc90c152eb03"><br>
     <p>Dari class diagram di atas ada 5 class yang terbentuk yaitu User, Menu’s Recipe, Search, Recipe Detail, dan Profile.</p>
     <ol type='1'>
         <li>Class User memiliki atribut username, password, dan email yang memiliki 2 aktivitas yang bisa dilakukan yaitu login dan register.</li>
@@ -102,7 +104,25 @@ Aplikasi Daftar Resep Makanan (Dapur Mama Tur) adalah aplikasi yang berguna untu
         <li>Class Recipe Detail memiliki atribut summarize fod, ingredients, dan instructionfood yang memiliki aktivitas view_recipe_detail.</li>
         <li>Class Profil memiliki atribut yang sama dengan User namun dengan aktivitas yang berbeda yaitu edit_profile dan log_out.</li>
   </ul><br>
-  
+</ol>
+
+## Application Development Stage
+
+<ol type='a'>
+  <li><b>Tahap Implementasi</b></li>
+  <p>Extreme Programming (XP) merupakan pilihan yang tepat untuk pengembangan aplikasi seperti "Aplikasi Daftar Resep Makanan" karena fokusnya pada respons cepat terhadap perubahan kebutuhan pelanggan dan pengiriman perangkat lunak yang berkualitas tinggi dalam waktu yang singkat. Berikut adalah alasan mengapa XP cocok digunakan dalam pengembangan aplikasi ini yang menggunakan arsitektur MVVM (Model-View-ViewModel): </p><br>
+  <ul type='disc'>
+    <li>Iterasi Cepat: Dalam XP, pengembangan dilakukan secara iteratif dan inkremental. Ini memungkinkan tim untuk menghasilkan versi awal aplikasi dengan fitur-fitur dasar yang bisa segera digunakan oleh pengguna, seperti menambahkan, mencari, dan mengelola resep makanan. Setiap iterasi memberikan kesempatan untuk menguji dan memperbaiki aplikasi, serta menyesuaikan fitur sesuai dengan umpan balik pelanggan. </li>
+    <li>Pair Programming: Praktik pair programming dalam XP memungkinkan programmer untuk bekerja bersama secara langsung, dengan satu orang menulis kode sementara yang lainnya memberikan masukan dan melakukan pengujian. Dalam konteks aplikasi ini, pair programming dapat membantu memastikan bahwa logika bisnis terkait manajemen resep makanan terimplementasikan dengan baik dan efisien. </li>
+    <li>Pengujian Otomatis: XP mendorong penggunaan pengujian otomatis yang kuat. Dalam pengembangan aplikasi daftar resep makanan, ini dapat mencakup pengujian unit untuk memastikan fungsi-fungsi seperti menambahkan, mengedit, dan menghapus resep berfungsi dengan benar, serta pengujian integrasi untuk memastikan seluruh sistem berinteraksi dengan baik. </li>
+    <li>Refaktorisasi Reguler: XP mendorong praktik refaktorisasi kode secara teratur. Dengan menggunakan arsitektur MVVM, tim pengembang dapat dengan mudah mengidentifikasi bagian-bagian kode yang perlu ditingkatkan atau diperbaiki, serta memisahkan logika bisnis dari tampilan. Ini membantu menjaga kebersihan dan keterbacaan kode, serta memudahkan pengembangan dan pemeliharaan aplikasi di masa mendatang.
+</li>
+  </ul><br>
+  <p>Dengan kombinasi XP dan arsitektur MVVM, pengembang dapat menciptakan aplikasi daftar resep makanan yang kelincahan, mudah diubah, dan berkualitas tinggi, sambil tetap memenuhi kebutuhan dan ekspektasi pengguna.</p>
+
+  <li><b>Time Plan</b></li>
+  <p>Estimasi waktu pengerjaan proyek aplikasi</p>
+  <img src="">
 </ol>
 
 
