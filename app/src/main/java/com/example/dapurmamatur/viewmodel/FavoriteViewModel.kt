@@ -9,13 +9,13 @@ class FavoriteViewModel(private val repository: MainRepository) : ViewModel() {
 
     val favoriteList: LiveData<List<FoodEntity>> = repository.getDbFoodList().asLiveData()
 
-    fun saveFood(foodEntity: FoodEntity) = viewModelScope.launch {
+    fun saveFavorite(foodEntity: FoodEntity) = viewModelScope.launch {
         repository.saveFood(foodEntity)
     }
 
-    fun deleteFood(foodEntity: FoodEntity) = viewModelScope.launch {
+    fun deleteFavorite(foodEntity: FoodEntity) = viewModelScope.launch {
         repository.deleteFood(foodEntity)
     }
 
-    fun existsFood(id: Int): LiveData<Boolean> = repository.existsFood(id).asLiveData()
+    fun isFavorite(id: Int): LiveData<Boolean> = repository.existsFood(id.toString()).asLiveData()
 }

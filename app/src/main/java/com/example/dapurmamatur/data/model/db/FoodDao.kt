@@ -15,5 +15,5 @@ interface FoodDao {
     fun getAllFoods(): Flow<List<FoodEntity>>
 
     @Query("SELECT EXISTS (SELECT 1 FROM food_table WHERE id = :id)")
-    fun existsFood(id: Int): Flow<Boolean>
+    fun existsFood(id: String?): Flow<Boolean>
 }

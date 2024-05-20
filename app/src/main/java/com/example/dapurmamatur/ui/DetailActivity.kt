@@ -1,17 +1,20 @@
 package com.example.dapurmamatur.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
-import com.example.dapurmamatur.ui.adapter.IngredientsAdapter
+import com.example.dapurmamatur.R
+import com.example.dapurmamatur.adapter.IngredientsAdapter
 import com.example.dapurmamatur.data.model.response.MealsListResponse
+import com.example.dapurmamatur.data.repository.MainRepository
 import com.example.dapurmamatur.databinding.ActivityDetailBinding
 import com.example.dapurmamatur.di.ApiModule
 import com.example.dapurmamatur.di.DbModule
-import com.example.dapurmamatur.data.repository.MainRepository
+import com.example.dapurmamatur.data.model.db.FoodEntity
 import com.example.dapurmamatur.utils.DataStatus
 import com.example.dapurmamatur.viewModel.DetailViewModel
 import com.example.dapurmamatur.viewModel.DetailViewModelFactory
@@ -32,7 +35,8 @@ class DetailActivity : AppCompatActivity() {
             DbModule.provideFoodDao(DbModule.provideDatabase(applicationContext))
         )
 
-        detailViewModel = ViewModelProvider(this, DetailViewModelFactory(repository)).get(DetailViewModel::class.java)
+        detailViewModel = ViewModelProvider(this, DetailViewModelFactory(repository)).get(
+            DetailViewModel::class.java)
 
         val mealId = intent.getStringExtra("MEAL_ID")?.toInt() ?: -1
         if (mealId != -1) {
@@ -41,6 +45,17 @@ class DetailActivity : AppCompatActivity() {
 
         setupRecyclerView()
         setupObservers()
+
+        binding.backButtonDetail.setOnClickListener {
+            onBackPressed()
+        }
+
+        binding.FavoriteButton.setOnClickListener {
+            val meal = detailViewModel.foodDetail.value?.data?.meals?.firstOrNull()
+            meal?.let {
+                toggleFavorite(it)
+            }
+        }
     }
 
     private fun setupRecyclerView() {
@@ -68,6 +83,14 @@ class DetailActivity : AppCompatActivity() {
                 }
             }
         })
+
+        detailViewModel.isFavorite.observe(this, Observer { isFavorite ->
+            if (isFavorite) {
+                binding.FavoriteButton.setImageResource(R.drawable.ic_favorite)
+            } else {
+                binding.FavoriteButton.setImageResource(R.drawable.ic_favorite_button_on_click)
+            }
+        })
     }
 
     private fun bindDetails(meal: MealsListResponse.Meal) {
@@ -76,19 +99,29 @@ class DetailActivity : AppCompatActivity() {
             recipeTitle.text = meal.strMeal
             recipeCatgory.text = meal.strCategory
             recipeInstructions.text = meal.strInstructions
-            // Bind ingredients
             ingredientsAdapter.setData(getIngredientsList(meal))
         }
     }
 
-    private fun getIngredientsList(meal: MealsListResponse.Meal): List<String> {
-        val ingredients = mutableListOf<String>()
-        if (!meal.strIngredient1.isNullOrEmpty()) ingredients.add("${meal.strIngredient1} - ${meal.strMeasure1}")
-        if (!meal.strIngredient2.isNullOrEmpty()) ingredients.add("${meal.strIngredient2} - ${meal.strMeasure2}")
-        if (!meal.strIngredient3.isNullOrEmpty()) ingredients.add("${meal.strIngredient3} - ${meal.strMeasure3}")
-        if (!meal.strIngredient4.isNullOrEmpty()) ingredients.add("${meal.strIngredient4} - ${meal.strMeasure4}")
-        if (!meal.strIngredient5.isNullOrEmpty()) ingredients.add("${meal.strIngredient5} - ${meal.strMeasure5}")
+    private fun getIngredientsList(meal: MealsListResponse.Meal): List<Pair<String, String?>> {
+        val ingredients = mutableListOf<Pair<String, String?>>()
+        if (!meal.strIngredient1.isNullOrEmpty()) ingredients.add(meal.strIngredient1 to meal.strMeasure1)
+        if (!meal.strIngredient2.isNullOrEmpty()) ingredients.add(meal.strIngredient2 to meal.strMeasure2)
+        if (!meal.strIngredient3.isNullOrEmpty()) ingredients.add(meal.strIngredient3 to meal.strMeasure3)
+        if (!meal.strIngredient4.isNullOrEmpty()) ingredients.add(meal.strIngredient4 to meal.strMeasure4)
+        if (!meal.strIngredient5.isNullOrEmpty()) ingredients.add(meal.strIngredient5 to meal.strMeasure5)
         // Add more ingredients as needed
         return ingredients
+    }
+
+    private fun toggleFavorite(meal: MealsListResponse.Meal) {
+        detailViewModel.isFavorite.observe(this, Observer { isFavorite ->
+            if (isFavorite) {
+                detailViewModel.deleteFavorite(FoodEntity(meal.idMeal!!, meal.strMeal!!, meal.strMealThumb))
+            } else {
+                detailViewModel.saveFavorite(FoodEntity(meal.idMeal!!, meal.strMeal!!, meal.strMealThumb))
+            }
+        })
+        detailViewModel.checkFavoriteStatus(meal.idMeal)
     }
 }

@@ -93,6 +93,6 @@ class MainRepository(private val apiService: ApiService, private val dao: FoodDa
 
     suspend fun saveFood(entity: FoodEntity) = dao.saveFood(entity)
     suspend fun deleteFood(entity: FoodEntity) = dao.deleteFood(entity)
-    fun existsFood(id: Int) = dao.existsFood(id)
+    fun existsFood(id: String?) = dao.existsFood(id.toString())
     fun getDbFoodList() = dao.getAllFoods()
 }

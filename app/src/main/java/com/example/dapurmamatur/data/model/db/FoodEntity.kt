@@ -5,8 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "food_table")
 data class FoodEntity(
-    @PrimaryKey
-    val id: Int,
-    val title: String,
-    val img: String
+    @PrimaryKey val id: String,
+    val name: String,
+    val description: String?
 )

@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import coil.load
 import com.example.dapurmamatur.R
 import com.example.dapurmamatur.ui.adapter.CategoriesAdapter
 import com.example.dapurmamatur.ui.adapter.FoodsAdapter
@@ -22,6 +23,7 @@ import com.example.dapurmamatur.utils.CheckConnection
 import com.example.dapurmamatur.utils.DataStatus
 import com.example.dapurmamatur.viewModel.HomeViewModel
 import com.example.dapurmamatur.viewModel.HomeViewModelFactory
+import com.google.firebase.auth.FirebaseAuth
 
 class HomeActivity : AppCompatActivity() {
 
@@ -30,6 +32,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var categoriesAdapter: CategoriesAdapter
     private lateinit var foodsAdapter: FoodsAdapter
     private lateinit var checkConnection: CheckConnection
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +46,8 @@ class HomeActivity : AppCompatActivity() {
 
         homeViewModel = ViewModelProvider(this, HomeViewModelFactory(repository)).get(HomeViewModel::class.java)
 
+        auth = FirebaseAuth.getInstance()
+
         setupRecyclerViews()
         setupObservers()
         setupSearchInput()
@@ -50,7 +55,13 @@ class HomeActivity : AppCompatActivity() {
         setupBottomNavigation()
 
         homeViewModel.getCategoriesList()
-        homeViewModel.getFoodsList("m") // Display foods list starting with letter "a" initially
+        homeViewModel.getFoodsList("f")
+
+        val user = auth.currentUser
+        user?.let {
+            binding.profileImage.load(it.photoUrl)
+            binding.profileName.text = it.displayName
+        }
 
         binding.profileLayout.setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
@@ -117,7 +128,7 @@ class HomeActivity : AppCompatActivity() {
                     if (it.isNotEmpty()) {
                         homeViewModel.getFoodBySearch(it)
                     } else {
-                        homeViewModel.getFoodsList("m")
+                        homeViewModel.getFoodsList("f")
                     }
                 }
             }
@@ -142,11 +153,8 @@ class HomeActivity : AppCompatActivity() {
     private fun setupBottomNavigation() {
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.navigation_home -> {
-                    startActivity(Intent(this, HomeActivity::class.java))
-                    true
-                }
-                R.id.navigation_favorites -> {
+                R.id.navigation_home -> true
+                R.id.navigation_favorite -> {
                     startActivity(Intent(this, FavoriteActivity::class.java))
                     true
                 }
@@ -157,5 +165,6 @@ class HomeActivity : AppCompatActivity() {
                 else -> false
             }
         }
+        binding.bottomNavigation.selectedItemId = R.id.navigation_home
     }
 }

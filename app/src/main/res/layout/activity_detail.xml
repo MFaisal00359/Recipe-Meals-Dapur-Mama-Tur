@@ -162,12 +162,12 @@
                 android:layout_marginTop="28dp"
                 android:orientation="horizontal"
                 android:layout_marginHorizontal="25dp"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Ingredients"
-                tools:listitem="@layout/item_categories" />
+                tools:listitem="@layout/item_ingredient" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

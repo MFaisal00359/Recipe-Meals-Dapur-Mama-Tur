@@ -4,37 +4,38 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import coil.load
 import com.example.dapurmamatur.R
+import com.example.dapurmamatur.databinding.ActivityProfileBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 
 class ProfileActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var user: FirebaseUser
-    private lateinit var profileImageView: ImageView
-    private lateinit var profileImageAdd: ImageView
+    private lateinit var binding: ActivityProfileBinding
+    private lateinit var storageReference: StorageReference
 
     private val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         uri?.let {
-            profileImageView.setImageURI(it)
-            Toast.makeText(this, "Image successfully added", Toast.LENGTH_SHORT).show()
+            binding.profileImage.setImageURI(it)
+            uploadImageToFirebase(it)
         }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_profile)
+        binding = ActivityProfileBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
         user = auth.currentUser ?: run {
@@ -43,6 +44,8 @@ class ProfileActivity : AppCompatActivity() {
             return
         }
 
+        storageReference = FirebaseStorage.getInstance().reference.child("profile_images/${user.uid}")
+
         val rootView = findViewById<View>(R.id.main)
         ViewCompat.setOnApplyWindowInsetsListener(rootView) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -50,30 +53,78 @@ class ProfileActivity : AppCompatActivity() {
             insets
         }
 
-        val backButton = findViewById<Toolbar>(R.id.backButtonProfile)
-        backButton.setNavigationOnClickListener {
+        binding.backButtonProfile.setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))
             finish()
         }
 
-        val textViewEmail = findViewById<TextView>(R.id.EmailInputView)
-        val textViewUsername = findViewById<TextView>(R.id.UsernameInputView)
-        textViewEmail.text = user.email
-        textViewUsername.text = user.displayName ?: "Username not set"
+        binding.EmailInputView.text = user.email
+        binding.UsernameInputView.text = user.displayName ?: "Username not set"
 
-        val buttonLogout = findViewById<Button>(R.id.buttonLogout)
-        buttonLogout.setOnClickListener {
+        binding.buttonLogout.setOnClickListener {
             auth.signOut()
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
 
-        profileImageView = findViewById(R.id.profileImage)
-        profileImageAdd = findViewById(R.id.profileImageAdd)
-        profileImageAdd.setOnClickListener {
+        binding.profileImageAdd.setOnClickListener {
             pickImageLauncher.launch("image/*")
         }
 
+        loadProfileImage()
+        setupBottomNavigation()
     }
+
+    private fun loadProfileImage() {
+        storageReference.downloadUrl.addOnSuccessListener { uri ->
+            binding.profileImage.load(uri.toString())
+        }.addOnFailureListener {
+            // Handle failure
+        }
+    }
+
+    private fun uploadImageToFirebase(uri: Uri) {
+        storageReference.putFile(uri).addOnSuccessListener {
+            storageReference.downloadUrl.addOnSuccessListener { downloadUri ->
+                updateProfileImageUri(downloadUri)
+            }
+        }.addOnFailureListener {
+            Toast.makeText(this, "Image upload failed", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun updateProfileImageUri(uri: Uri) {
+        val profileUpdates = UserProfileChangeRequest.Builder()
+            .setPhotoUri(uri)
+            .build()
+
+        user.updateProfile(profileUpdates).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                Toast.makeText(this, "Profile image updated", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Profile image update failed", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+
+    private fun setupBottomNavigation() {
+        binding.bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_home -> {
+                    startActivity(Intent(this, HomeActivity::class.java))
+                    true
+                }
+                R.id.navigation_favorite -> {
+                    startActivity(Intent(this, FavoriteActivity::class.java))
+                    true
+                }
+                R.id.navigation_profile -> true
+                else -> false
+            }
+        }
+        binding.bottomNavigation.selectedItemId = R.id.navigation_profile
+    }
+
 
 }

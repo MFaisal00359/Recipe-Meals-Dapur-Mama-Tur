@@ -28,11 +28,7 @@ class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.ViewHolder>() {
     inner class ViewHolder : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: FoodEntity) {
             binding.apply {
-                recipeImage.load(item.img) {
-                    crossfade(true)
-                    crossfade(500)
-                }
-                recipeTitle.text = item.title
+                recipeTitle.text = item.description
 //                itemFoodsCount.visibility = View.GONE
                 root.setOnClickListener {
                     onItemClickListener?.let { it(item) }
