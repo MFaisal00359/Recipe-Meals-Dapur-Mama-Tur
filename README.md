@@ -140,7 +140,7 @@ Aplikasi Daftar Resep Makanan (Dapur Mama Tur) adalah aplikasi yang berguna untu
 </ol>
 
 ### Download Aplikasi
-[https://drive.google.com/file/d/195ESnuz2vhWellh-4oytGETK5EQIYuD5/view?usp=drive_link](https://drive.google.com/file/d/1aOuttdiwQL6h_YLDhlK2H-Ml19at4obU/view?usp=drive_link)
+https://drive.google.com/file/d/1vsF2dc9Nzjgg1aygXxflapjrHPj5cwFK/view?usp=drive_link
 
 ### Figma
 https://www.figma.com/file/TRjE8ffNrQ6I9CBc7O6POE/PAM-UAS?type=design&node-id=0%3A1&mode=design&t=yy3gRLAKJwr80Swm-1
