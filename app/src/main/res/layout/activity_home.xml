@@ -40,7 +40,7 @@
                 android:layout_gravity="center_vertical"
                 android:contentDescription="@string/profile_image"
                 android:padding="8dp"
-                android:src="@drawable/background_circle" />
+                android:src="@drawable/default_profile_image" />
 
             <TextView
                 android:id="@+id/profileName"

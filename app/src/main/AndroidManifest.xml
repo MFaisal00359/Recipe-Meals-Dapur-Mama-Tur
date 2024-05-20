@@ -21,11 +21,17 @@
             android:exported="false"
             android:theme="@style/Theme.DapurMamaTur" />
         <activity
+            android:name=".ui.FavoriteActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
+        <activity
             android:name=".ui.ProfileActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
         <activity
             android:name=".ui.HomeActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
         <activity
             android:name=".ui.LoginActivity"
             android:exported="false" />
@@ -34,9 +40,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.WelcomeActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:exported="true"
-            android:theme="@style/Theme.DapurMamaTur.Fullscreen" >
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

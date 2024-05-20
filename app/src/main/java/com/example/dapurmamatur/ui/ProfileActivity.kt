@@ -117,7 +117,7 @@ class ProfileActivity : AppCompatActivity() {
                 }
                 R.id.navigation_favorite -> {
                     startActivity(Intent(this, FavoriteActivity::class.java))
-                    true
+                    false
                 }
                 R.id.navigation_profile -> true
                 else -> false

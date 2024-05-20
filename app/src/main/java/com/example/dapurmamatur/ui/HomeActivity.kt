@@ -55,11 +55,11 @@ class HomeActivity : AppCompatActivity() {
         setupBottomNavigation()
 
         homeViewModel.getCategoriesList()
-        homeViewModel.getFoodsList("f")
+        homeViewModel.getFoodsList("b")
 
         val user = auth.currentUser
         user?.let {
-            binding.profileImage.load(it.photoUrl)
+            binding.profileImage
             binding.profileName.text = it.displayName
         }
 
@@ -128,7 +128,7 @@ class HomeActivity : AppCompatActivity() {
                     if (it.isNotEmpty()) {
                         homeViewModel.getFoodBySearch(it)
                     } else {
-                        homeViewModel.getFoodsList("f")
+                        homeViewModel.getFoodsList("b")
                     }
                 }
             }
