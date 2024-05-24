@@ -1,6 +1,5 @@
 package com.example.dapurmamatur.ui
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -15,9 +14,9 @@ import com.example.dapurmamatur.databinding.ActivityDetailBinding
 import com.example.dapurmamatur.di.ApiModule
 import com.example.dapurmamatur.di.DbModule
 import com.example.dapurmamatur.data.model.db.FoodEntity
-import com.example.dapurmamatur.utils.DataStatus
-import com.example.dapurmamatur.viewModel.DetailViewModel
-import com.example.dapurmamatur.viewModel.DetailViewModelFactory
+import com.example.dapurmamatur.utilities.DataStatus
+import com.example.dapurmamatur.viewmodel.DetailViewModel
+import com.example.dapurmamatur.viewmodel.DetailViewModelFactory
 
 class DetailActivity : AppCompatActivity() {
 
@@ -73,8 +72,8 @@ class DetailActivity : AppCompatActivity() {
                     // Show loading
                 }
                 DataStatus.Status.SUCCESS -> {
-                    status.data?.let {
-                        val meal = it.meals?.firstOrNull()
+                    status.data?.let { response ->
+                        val meal = response.meals?.firstOrNull()
                         meal?.let { bindDetails(it) }
                     }
                 }

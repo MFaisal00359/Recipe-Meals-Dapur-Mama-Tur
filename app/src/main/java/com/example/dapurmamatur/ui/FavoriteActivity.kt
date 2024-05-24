@@ -11,8 +11,8 @@ import com.example.dapurmamatur.di.ApiModule
 import com.example.dapurmamatur.di.DbModule
 import com.example.dapurmamatur.ui.adapter.FavoriteAdapter
 import com.example.dapurmamatur.R
-import com.example.dapurmamatur.viewModel.FavoriteViewModel
-import com.example.dapurmamatur.viewModel.FavoriteViewModelFactory
+import com.example.dapurmamatur.viewmodel.FavoriteViewModel
+import com.example.dapurmamatur.viewmodel.FavoriteViewModelFactory
 
 class FavoriteActivity : AppCompatActivity() {
 
@@ -38,9 +38,9 @@ class FavoriteActivity : AppCompatActivity() {
         setupObservers()
         setupBottomNavigation()
 
-        favoriteViewModel.favoriteList.observe(this, {
+        favoriteViewModel.favoriteList.observe(this) {
             favoriteAdapter.setData(it)
-        })
+        }
 
         binding.backButtonFavorite.setOnClickListener {
             onBackPressed()
@@ -48,7 +48,14 @@ class FavoriteActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        favoriteAdapter = FavoriteAdapter()
+        favoriteAdapter = FavoriteAdapter().apply {
+            setOnItemClickListener { foodEntity ->
+                val intent = Intent(this@FavoriteActivity, DetailActivity::class.java).apply {
+                    putExtra("MEAL_ID", foodEntity.id)
+                }
+                startActivity(intent)
+            }
+        }
         binding.recyclerViewRecipes.apply {
             layoutManager = LinearLayoutManager(this@FavoriteActivity)
             adapter = favoriteAdapter
@@ -56,7 +63,9 @@ class FavoriteActivity : AppCompatActivity() {
     }
 
     private fun setupObservers() {
-        // Observe LiveData for favorite recipes
+        favoriteViewModel.favoriteList.observe(this) {
+            favoriteAdapter.setData(it)
+        }
     }
 
     private fun setupBottomNavigation() {
@@ -66,10 +75,7 @@ class FavoriteActivity : AppCompatActivity() {
                     startActivity(Intent(this, HomeActivity::class.java))
                     true
                 }
-                R.id.navigation_favorite -> {
-                    startActivity(Intent(this, ProfileActivity::class.java))
-                    true
-                }
+                R.id.navigation_favorite -> true
                 R.id.navigation_profile -> {
                     startActivity(Intent(this, ProfileActivity::class.java))
                     true

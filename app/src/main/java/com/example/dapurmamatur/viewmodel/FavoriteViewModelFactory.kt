@@ -1,4 +1,4 @@
-package com.example.dapurmamatur.viewModel
+package com.example.dapurmamatur.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

@@ -1,10 +1,10 @@
-package com.example.dapurmamatur.viewModel
+package com.example.dapurmamatur.viewmodel
 
 import androidx.lifecycle.*
 import com.example.dapurmamatur.data.model.db.FoodEntity
 import com.example.dapurmamatur.data.model.response.MealsListResponse
 import com.example.dapurmamatur.data.repository.MainRepository
-import com.example.dapurmamatur.utils.DataStatus
+import com.example.dapurmamatur.utilities.DataStatus
 import kotlinx.coroutines.launch
 
 class DetailViewModel(private val repository: MainRepository) : ViewModel() {
@@ -33,8 +33,12 @@ class DetailViewModel(private val repository: MainRepository) : ViewModel() {
     }
 
     fun checkFavoriteStatus(id: String?) = viewModelScope.launch {
-        repository.existsFood(id).collect {
-            _isFavorite.value = it
+        if (id != null) {
+            repository.existsFood(id).collect {
+                _isFavorite.value = it
+            }
         }
     }
+
+    suspend fun isFavorite(id: Int): LiveData<Boolean> = repository.existsFood(id.toString()).asLiveData()
 }

@@ -1,4 +1,4 @@
-package com.example.dapurmamatur.viewModel
+package com.example.dapurmamatur.viewmodel
 
 import androidx.lifecycle.*
 import com.example.dapurmamatur.data.model.db.FoodEntity
@@ -17,5 +17,5 @@ class FavoriteViewModel(private val repository: MainRepository) : ViewModel() {
         repository.deleteFood(foodEntity)
     }
 
-    fun isFavorite(id: Int): LiveData<Boolean> = repository.existsFood(id.toString()).asLiveData()
+    suspend fun isFavorite(id: Int): LiveData<Boolean> = repository.existsFood(id.toString()).asLiveData()
 }

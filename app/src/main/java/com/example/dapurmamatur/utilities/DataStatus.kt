@@ -1,4 +1,4 @@
-package com.example.dapurmamatur.utils
+package com.example.dapurmamatur.utilities
 
 class DataStatus<out T>(val status: Status, val data: T? = null, val message: String? = null) {
 
