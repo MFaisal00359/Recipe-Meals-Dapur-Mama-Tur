@@ -7,7 +7,7 @@
     <string name="sign_in">Sign In</string>
     <string name="new_password">New Password</string>
     <string name="not_have_account">Not have account?</string>
-    <string name="create_account">Create Account</string>
+    <string name="create_account">Create Account.</string>
     <string name="password">Password</string>
     <string name="Dapur_Mama_Tur">Dapur Mama Tur</string>
     <string name="descriptionimagebg1">this image food\'s for background decoration app\n</string>
@@ -97,4 +97,5 @@
     <string name="home">Home</string>
     <string name="favorites">Favorites</string>
     <string name="item_categories_image">Item Categories Image</string>
+    <string name="hr">|</string>
 </resources>

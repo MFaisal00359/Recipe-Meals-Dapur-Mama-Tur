@@ -11,9 +11,10 @@
 
     <ImageView
         android:id="@+id/welcome_image"
-        android:layout_width="340dp"
-        android:layout_height="340dp"
-        android:layout_marginBottom="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="405dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="30dp"
         android:contentDescription="@string/description_logo"
         android:importantForAccessibility="no"
         android:src="@drawable/welcome_image"
