@@ -1,10 +1,10 @@
-package com.example.dapurmamatur.viewModel
+package com.example.dapurmamatur.viewmodel
 
 import androidx.lifecycle.*
 import com.example.dapurmamatur.data.repository.MainRepository
 import com.example.dapurmamatur.data.model.response.CategoriesListResponse
 import com.example.dapurmamatur.data.model.response.MealsListResponse
-import com.example.dapurmamatur.utils.DataStatus
+import com.example.dapurmamatur.utilities.DataStatus
 import kotlinx.coroutines.launch
 
 class HomeViewModel(private val repository: MainRepository) : ViewModel() {

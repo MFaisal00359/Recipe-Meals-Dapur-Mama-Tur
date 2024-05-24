@@ -1,4 +1,4 @@
-package com.example.dapurmamatur.utils
+package com.example.dapurmamatur.utilities
 
 object Value {
 

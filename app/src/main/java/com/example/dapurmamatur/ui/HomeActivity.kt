@@ -6,11 +6,9 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import coil.load
 import com.example.dapurmamatur.R
 import com.example.dapurmamatur.ui.adapter.CategoriesAdapter
 import com.example.dapurmamatur.ui.adapter.FoodsAdapter
@@ -19,10 +17,10 @@ import com.example.dapurmamatur.di.ApiModule
 import com.example.dapurmamatur.di.DbModule
 import com.example.dapurmamatur.di.NetworkModule
 import com.example.dapurmamatur.data.repository.MainRepository
-import com.example.dapurmamatur.utils.CheckConnection
-import com.example.dapurmamatur.utils.DataStatus
-import com.example.dapurmamatur.viewModel.HomeViewModel
-import com.example.dapurmamatur.viewModel.HomeViewModelFactory
+import com.example.dapurmamatur.utilities.CheckConnection
+import com.example.dapurmamatur.utilities.DataStatus
+import com.example.dapurmamatur.viewmodel.HomeViewModel
+import com.example.dapurmamatur.viewmodel.HomeViewModelFactory
 import com.google.firebase.auth.FirebaseAuth
 
 class HomeActivity : AppCompatActivity() {
@@ -44,7 +42,7 @@ class HomeActivity : AppCompatActivity() {
             DbModule.provideFoodDao(DbModule.provideDatabase(applicationContext))
         )
 
-        homeViewModel = ViewModelProvider(this, HomeViewModelFactory(repository)).get(HomeViewModel::class.java)
+        homeViewModel = ViewModelProvider(this, HomeViewModelFactory(repository))[HomeViewModel::class.java]
 
         auth = FirebaseAuth.getInstance()
 
@@ -96,27 +94,29 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setupObservers() {
-        homeViewModel.categoriesList.observe(this, Observer { status ->
+        homeViewModel.categoriesList.observe(this) { status ->
             when (status.status) {
                 DataStatus.Status.LOADING -> binding.homeCategoryLoading.visibility = View.VISIBLE
                 DataStatus.Status.SUCCESS -> {
                     binding.homeCategoryLoading.visibility = View.GONE
                     status.data?.let { categoriesAdapter.setData(it.categories) }
                 }
+
                 DataStatus.Status.ERROR -> binding.homeCategoryLoading.visibility = View.GONE
             }
-        })
+        }
 
-        homeViewModel.foodList.observe(this, Observer { status ->
+        homeViewModel.foodList.observe(this) { status ->
             when (status.status) {
                 DataStatus.Status.LOADING -> binding.homeFoodsLoading.visibility = View.VISIBLE
                 DataStatus.Status.SUCCESS -> {
                     binding.homeFoodsLoading.visibility = View.GONE
                     status.data?.let { foodsAdapter.setData(it.meals ?: emptyList()) }
                 }
+
                 DataStatus.Status.ERROR -> binding.homeFoodsLoading.visibility = View.GONE
             }
-        })
+        }
     }
 
     private fun setupSearchInput() {
@@ -137,7 +137,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setupConnectionObserver() {
         checkConnection = CheckConnection(NetworkModule.provideConnectivityManager(this))
-        checkConnection.observe(this, Observer { isConnected ->
+        checkConnection.observe(this) { isConnected ->
             if (isConnected) {
                 binding.viewOffline.visibility = View.GONE
                 binding.homeDissconect.visibility = View.GONE
@@ -147,7 +147,7 @@ class HomeActivity : AppCompatActivity() {
                 binding.homeDissconect.visibility = View.VISIBLE
                 binding.viewContent.visibility = View.GONE
             }
-        })
+        }
     }
 
     private fun setupBottomNavigation() {

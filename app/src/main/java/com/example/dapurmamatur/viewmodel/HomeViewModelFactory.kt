@@ -1,4 +1,4 @@
-package com.example.dapurmamatur.viewModel
+package com.example.dapurmamatur.viewmodel
 
 import androidx.lifecycle.*
 import com.example.dapurmamatur.data.repository.MainRepository

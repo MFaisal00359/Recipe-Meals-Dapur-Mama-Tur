@@ -5,7 +5,7 @@ import com.example.dapurmamatur.data.model.db.FoodDao
 import com.example.dapurmamatur.data.model.response.CategoriesListResponse
 import com.example.dapurmamatur.data.model.response.MealsListResponse
 import com.example.dapurmamatur.data.model.db.FoodEntity
-import com.example.dapurmamatur.utils.DataStatus
+import com.example.dapurmamatur.utilities.DataStatus
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -93,6 +93,6 @@ class MainRepository(private val apiService: ApiService, private val dao: FoodDa
 
     suspend fun saveFood(entity: FoodEntity) = dao.saveFood(entity)
     suspend fun deleteFood(entity: FoodEntity) = dao.deleteFood(entity)
-    fun existsFood(id: String?) = dao.existsFood(id.toString())
+    suspend fun existsFood(id: String?) = dao.existsFood(id.toString())
     fun getDbFoodList() = dao.getAllFoods()
 }
