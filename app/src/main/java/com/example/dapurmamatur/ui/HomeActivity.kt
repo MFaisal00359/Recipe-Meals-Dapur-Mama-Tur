@@ -57,7 +57,6 @@ class HomeActivity : AppCompatActivity() {
 
         val user = auth.currentUser
         user?.let {
-            binding.profileImage
             binding.profileName.text = it.displayName
         }
 
@@ -101,7 +100,6 @@ class HomeActivity : AppCompatActivity() {
                     binding.homeCategoryLoading.visibility = View.GONE
                     status.data?.let { categoriesAdapter.setData(it.categories) }
                 }
-
                 DataStatus.Status.ERROR -> binding.homeCategoryLoading.visibility = View.GONE
             }
         }
@@ -113,7 +111,6 @@ class HomeActivity : AppCompatActivity() {
                     binding.homeFoodsLoading.visibility = View.GONE
                     status.data?.let { foodsAdapter.setData(it.meals ?: emptyList()) }
                 }
-
                 DataStatus.Status.ERROR -> binding.homeFoodsLoading.visibility = View.GONE
             }
         }

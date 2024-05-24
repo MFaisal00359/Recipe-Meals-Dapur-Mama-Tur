@@ -40,5 +40,5 @@ class DetailViewModel(private val repository: MainRepository) : ViewModel() {
         }
     }
 
-    suspend fun isFavorite(id: Int): LiveData<Boolean> = repository.existsFood(id.toString()).asLiveData()
+//    suspend fun isFavorite(id: Int): LiveData<Boolean> = repository.existsFood(id.toString()).asLiveData()
 }

@@ -20,7 +20,6 @@ class FavoriteActivity : AppCompatActivity() {
     private lateinit var favoriteViewModel: FavoriteViewModel
     private lateinit var favoriteAdapter: FavoriteAdapter
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFavoriteBinding.inflate(layoutInflater)
@@ -31,16 +30,11 @@ class FavoriteActivity : AppCompatActivity() {
             DbModule.provideFoodDao(DbModule.provideDatabase(applicationContext))
         )
 
-        favoriteViewModel = ViewModelProvider(this, FavoriteViewModelFactory(repository)).get(
-            FavoriteViewModel::class.java)
+        favoriteViewModel = ViewModelProvider(this, FavoriteViewModelFactory(repository))[FavoriteViewModel::class.java]
 
         setupRecyclerView()
         setupObservers()
         setupBottomNavigation()
-
-        favoriteViewModel.favoriteList.observe(this) {
-            favoriteAdapter.setData(it)
-        }
 
         binding.backButtonFavorite.setOnClickListener {
             onBackPressed()

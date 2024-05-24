@@ -2,7 +2,6 @@ package com.example.dapurmamatur.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
@@ -34,8 +33,7 @@ class DetailActivity : AppCompatActivity() {
             DbModule.provideFoodDao(DbModule.provideDatabase(applicationContext))
         )
 
-        detailViewModel = ViewModelProvider(this, DetailViewModelFactory(repository)).get(
-            DetailViewModel::class.java)
+        detailViewModel = ViewModelProvider(this, DetailViewModelFactory(repository))[DetailViewModel::class.java]
 
         val mealId = intent.getStringExtra("MEAL_ID")?.toInt() ?: -1
         if (mealId != -1) {
@@ -60,36 +58,32 @@ class DetailActivity : AppCompatActivity() {
     private fun setupRecyclerView() {
         ingredientsAdapter = IngredientsAdapter()
         binding.ingredientsRecyclerView.apply {
-            layoutManager = LinearLayoutManager(this@DetailActivity)
+            layoutManager = LinearLayoutManager(this@DetailActivity, LinearLayoutManager.HORIZONTAL, false)
             adapter = ingredientsAdapter
         }
     }
 
     private fun setupObservers() {
-        detailViewModel.foodDetail.observe(this, Observer { status ->
+        detailViewModel.foodDetail.observe(this) { status ->
             when (status.status) {
-                DataStatus.Status.LOADING -> {
-                    // Show loading
-                }
+                DataStatus.Status.LOADING -> {}
                 DataStatus.Status.SUCCESS -> {
                     status.data?.let { response ->
                         val meal = response.meals?.firstOrNull()
                         meal?.let { bindDetails(it) }
                     }
                 }
-                DataStatus.Status.ERROR -> {
-                    // Show error
-                }
+                DataStatus.Status.ERROR -> {}
             }
-        })
+        }
 
-        detailViewModel.isFavorite.observe(this, Observer { isFavorite ->
+        detailViewModel.isFavorite.observe(this) { isFavorite ->
             if (isFavorite) {
                 binding.FavoriteButton.setImageResource(R.drawable.ic_favorite)
             } else {
                 binding.FavoriteButton.setImageResource(R.drawable.ic_favorite_button_on_click)
             }
-        })
+        }
     }
 
     private fun bindDetails(meal: MealsListResponse.Meal) {
@@ -109,18 +103,20 @@ class DetailActivity : AppCompatActivity() {
         if (!meal.strIngredient3.isNullOrEmpty()) ingredients.add(meal.strIngredient3 to meal.strMeasure3)
         if (!meal.strIngredient4.isNullOrEmpty()) ingredients.add(meal.strIngredient4 to meal.strMeasure4)
         if (!meal.strIngredient5.isNullOrEmpty()) ingredients.add(meal.strIngredient5 to meal.strMeasure5)
-        // Add more ingredients as needed
+        if (!meal.strIngredient6.isNullOrEmpty()) ingredients.add(meal.strIngredient6 to meal.strMeasure6)
         return ingredients
     }
 
     private fun toggleFavorite(meal: MealsListResponse.Meal) {
-        detailViewModel.isFavorite.observe(this, Observer { isFavorite ->
+        detailViewModel.isFavorite.observe(this) { isFavorite ->
             if (isFavorite) {
-                detailViewModel.deleteFavorite(FoodEntity(meal.idMeal!!, meal.strMeal!!, meal.strMealThumb))
+                detailViewModel.deleteFavorite(FoodEntity(meal.idMeal.toString(),
+                    meal.strMeal.toString(), meal.strMealThumb))
             } else {
-                detailViewModel.saveFavorite(FoodEntity(meal.idMeal!!, meal.strMeal!!, meal.strMealThumb))
+                detailViewModel.saveFavorite(FoodEntity(meal.idMeal.toString(),
+                    meal.strMeal.toString(), meal.strMealThumb))
             }
-        })
+        }
         detailViewModel.checkFavoriteStatus(meal.idMeal)
     }
 }
