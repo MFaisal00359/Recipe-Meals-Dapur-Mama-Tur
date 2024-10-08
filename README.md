@@ -31,15 +31,3 @@ Aplikasi Daftar Resep Makanan (Dapur Mama Tur) adalah aplikasi yang berguna untu
 3. M. Guntur Al Baihaqi  	(121140014)
 4. Tiara Putri Elisa  		(121140049)
 5. Adriansyah Ramadhan  	(121140051)
-
-### Download Aplikasi
-https://drive.google.com/file/d/1cz52wYzje-HGMtM9icBrWQGzZ7JE4iAZ/view?usp=drive_link
-
-### Presentasi Aplikasi
-https://drive.google.com/file/d/1icZljYl1crlMJvgE6j2hp3ezDqQB6qap/view?usp=drive_link
-
-### Figma
-https://www.figma.com/file/TRjE8ffNrQ6I9CBc7O6POE/PAM-UAS?type=design&node-id=0%3A1&mode=design&t=yy3gRLAKJwr80Swm-1
-
-### Proposal
-https://github.com/MFaisal00359/Recipe-Meals-Dapur-Mama-Tur/blob/main/Proposal/R-05_Proposal%20PAM%20.pdf
